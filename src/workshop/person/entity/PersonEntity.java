@@ -15,7 +15,8 @@ public class PersonEntity {
 	//overloading constructor
 	public PersonEntity(String name, String ssn, String address, String phone) {
 		this.name = name;
-		this.ssn = ssn;
+		//this.ssn = ssn;
+		setSsn(ssn);
 		this.address = address;
 		this.phone = phone;
 	}
@@ -45,9 +46,9 @@ public class PersonEntity {
 		if(ssn != null) {
 			char genderNum = ssn.charAt(6);
 			if(genderNum == '1' || genderNum == '3') {
-				setGender('³²');
+				setGender('남');
 			}else {
-				setGender('¿©');
+				setGender('여');
 			}
 		}
 	}
