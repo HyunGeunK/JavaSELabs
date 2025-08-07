@@ -20,7 +20,8 @@ public class FlexibleCompanyDemo {
         
         //Manager(자식)가 가진 getDept() 메서드 호출하기
         Manager itMgr2 = (Manager)itMgr;
-        System.out.println(itMgr2.getDept());        
+        System.out.println(itMgr2.getDept()); 
+        //((Manager)itMgr).getDept();
         
         
         //Heterogeneous Collection  Employee 타입의 배열의 선언하기
@@ -32,19 +33,24 @@ public class FlexibleCompanyDemo {
         emps[3] = new Manager("둘리",200,"HR");
         
         System.out.println("현재 월급입니다.");
-        printEmployeeinfo(emps);
+        printEmployInfo(emps);
         
         for(Employee emp: emps) {
         	emp.manageSalary(10);
         }
         
        System.out.println("올린 후의 월급입니다.");
-       printEmployeeinfo(emps);
+       printEmployInfo(emps);
                         
    }
 
-	private static void printEmployeeinfo(Employee[] emps) {
-		for(Employee emp: emps) {        	
+	public static void printEmployInfo(Employee[] emps) {
+		for(Employee emp: emps) { 
+			//emp가 Manager객체로 부터 만들어진 instance 인지를 체크하는 연산자
+			if(emp instanceof Manager) {
+				//((Manager)emp).getDept();
+				System.out.print("관리자 부서명 = " + ((Manager)emp).getDept() + " ");
+			}
         	System.out.println(emp.getName() + "의 현재 월급은 " + emp.getSalary() + " 만원 입니다.");        	
         }
 	}
